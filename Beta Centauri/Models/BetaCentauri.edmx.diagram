@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c1c15c46c6914e84a7171e7e6ffb4b6f" Name="Diagram1">
+        <EntityTypeShape EntityType="BetaDBModel.tblBloodGroup" Width="1.5" PointX="3.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BetaDBModel.tblBranch" Width="1.5" PointX="3.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BetaDBModel.tblCertificate" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BetaDBModel.tblCollege" Width="1.5" PointX="3.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BetaDBModel.tblCourse" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BetaDBModel.tblDistrict" Width="1.5" PointX="3.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BetaDBModel.tblEnquiry" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BetaDBModel.tblLogIn" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BetaDBModel.tblRegistration" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BetaDBModel.tblState" Width="1.5" PointX="3.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BetaDBModel.tblStream" Width="1.5" PointX="3.75" PointY="21.5" IsExpanded="true" />
+        <AssociationConnector Association="BetaDBModel.FK_BloodGroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="BetaDBModel.FK_BranchId" ManuallyRouted="false" />
+        <AssociationConnector Association="BetaDBModel.FK_tblCertificate_tblRegistration" ManuallyRouted="false" />
+        <AssociationConnector Association="BetaDBModel.FK_CollegeId" ManuallyRouted="false" />
+        <AssociationConnector Association="BetaDBModel.FK_Course_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="BetaDBModel.FK_CourseId" ManuallyRouted="false" />
+        <AssociationConnector Association="BetaDBModel.FK_DistrictId" ManuallyRouted="false" />
+        <AssociationConnector Association="BetaDBModel.FK_StateId" ManuallyRouted="false" />
+        <AssociationConnector Association="BetaDBModel.FK_StreamId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

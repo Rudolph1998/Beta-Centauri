@@ -1,0 +1,135 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags must come first in the head; any other head content must come after these tags -->
+    <title>Beta Centauri (P) Ltd.</title>
+
+</head>
+<body>
+
+
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <header class="entry-header">
+                    <h1 class="entry-title">Contact Us</h1>
+                </header>
+                <!-- .entry-header -->
+            </div>
+            <!--row #end  -->
+        </div>
+    </div>
+    <!-- Breadcrumb #end -->
+
+    <div class="page-spacer clearfix">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 map-location">
+                    <h3 class="head-border-default">Map and Location</h3>
+                    <!--Map-->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7671827.980432994!2d79.93986032596823!3d20.13364058956313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a226aece9af3bfd%3A0x133625caa9cea81f!2sOdisha!5e0!3m2!1sen!2sin!4v1590574682818!5m2!1sen!2sin" width="100%" height="375" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="col-xs-12 col-sm-8 contact-form">
+                        <h3>Stay in Touch</h3>
+                        <div id="success" class="alert alert-success">Your message succesfully sent!</div>
+                        <div id="error" class="alert alert-danger">Opps! There is something wrong. Please try again</div>
+                        <form class="contactform" method="post" id="contactForm">
+                            <p><input type="text" placeholder="Name" required id="name" name="name" /></p>
+                            <p><input type="number" id="phone" name="phone" placeholder="Contact Number" /></p>
+                            <p><input type="email" id="email" name="email" required placeholder="Email Address" /></p>
+                            <p><textarea placeholder="Message" name="message" id="message" rows="10" cols="40"></textarea></p>
+                            <p><input type="submit" class="btn btn-default" value="submit now" /></p>
+                        </form>
+                    </div>
+                }
+                <!-- contact-form #end -->
+                <!-- right col #startt -->
+                <div class="col-xs-12 col-sm-4 contact-info">
+                    <h3 class="head-border-default">Office Details</h3>
+                    <p class="address"><i class="fa fa-map-marker"></i>2036 Thunder Road CA 94612 Oakland, opp. of geon tower Pincode - 580089</p>
+                    <p class="phone"><i class="fa fa-phone"></i>731-234-5678</p>
+                    <p class="email"><i class="lnr lnr-envelope"></i>info@educationpress.com</p>
+
+                    <ul class="social-icons">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- right col #end -->
+
+            </div>
+            <!--row #end  -->
+        </div>
+        <!-- container #end -->
+    </div>
+    <!-- page-spacer #end  -->
+    <!-- #colophon -->
+    <!-- loginform popup start -->
+    <div id="login-form" style="display: none;">
+        <h3>Login</h3>
+        <p>Please login here</p>
+
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab1">Member Login</a></li>
+            <li><a data-toggle="tab" href="#tab2">Admin Login</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="tab1" class="tab-pane fade in active">
+                <form id="login" action="#">
+                    <input name="email" type="text" placeholder="Email or Username" class="mb-3" />
+                    <input name="password" type="text" placeholder="Password" />
+
+                    <div class="row remeber">
+                        <label><input name="rember" type="checkbox" value="" /> Remember Me</label>
+                    </div>
+                    <div class="text-center button">
+                        <input name="Login" type="button" value="Login" />
+                    </div>
+                </form>
+            </div>
+            <div id="tab2" class="tab-pane fade">
+                <form id="login" action="#">
+                    <input name="email" type="text" placeholder="Email or Username" class="mb-3" />
+                    <input name="password" type="text" placeholder="Password" />
+
+                    <div class="row remeber">
+                        <label><input name="rember" type="checkbox" value="" /> Remember Me</label>
+                    </div>
+                    <div class="text-center button">
+                        <input name="Login" type="button" value="Login" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!-- loginform popup #end -->
+    <!-- register popup start -->
+
+
+</body>
+
+</html>

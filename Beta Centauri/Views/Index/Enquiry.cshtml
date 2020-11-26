@@ -1,0 +1,100 @@
+﻿@model Beta_Centauri.Models.tblEnquiry
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   
+
+</head>
+<body>
+    <!-- header -->
+   
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal container" style="width:500px;border:solid black 2px">
+            <h3>Enquiry</h3>
+            <p>Please fill the Equiry form</p>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" , @id="name" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" , @id="phone" } })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" ,id="email"} })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CourseId, "Courses", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("CourseId", null, "-Select Course-", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.RefferBy, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.RefferBy, new { htmlAttributes = new { @class = "form-control" , @id="Refferby" } })
+                    @Html.ValidationMessageFor(model => model.RefferBy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Query, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Query, new { htmlAttributes = new { @class = "form-control", @id = "TextArea", } })
+                    @Html.ValidationMessageFor(model => model.Query, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 container">
+                    <input type="submit" value="Enquiry" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    }
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <!-- Flexslider js -->
+    <script src="~/vendor/flexslider/jquery.flexslider-min.js"></script>
+    <!-- Theme js -->
+    <script src="~/js/theme.js"></script>
+    <!-- Fancybox js -->
+    <script type="text/javascript" src="~/vendor/fancybox/js/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="~/vendor/fancybox/js/custom.fancybox.js"></script>
+    <script>
+        jQuery.noConflict();
+        jQuery(".fancybox").fancybox();</script>
+    <!-- wow animation js -->
+    <script src="~/js/wow.min.js"></script>
+    <script>new WOW().init();</script>
+</body>
+</html>

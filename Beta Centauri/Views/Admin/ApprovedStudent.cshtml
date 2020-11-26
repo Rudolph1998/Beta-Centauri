@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Beta_Centauri.Models.tblRegistration>
+
+@{
+    Layout = "~/Views/Shared/View.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+   
+
+
+    <script src="~/scripts/jquery-3.4.1.min.js"></script>
+
+
+</head>
+<body>
+    <div style="margin-top:70px;margin-left:250px;">
+
+        <input type="text" id="search2" placeholder="Search Name" />
+
+        <table class="table col-md-12" id="table1">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mobile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.tblCourse.CourseName)
+                </th>
+
+                <th>Action</th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if (item.IsApproved == true)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mobile)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tblCourse.CourseName)
+                        </td>
+
+                        <td>
+
+                            @Html.ActionLink("Details", "Details", new { id = item.StudentId })||
+                            @Html.ActionLink("IssueCertificate", "IssueCertificate", new { id = item.StudentId })
+                        </td>
+                    </tr>
+                }
+            }
+
+        </table>
+
+        <script>
+            $(document).ready(function () {
+                $('#search2').on("keyup", function () {
+                    var txtenter = $(this).val();
+                    $('#table1 tr').each(function () {
+                        var dt = $(this).find("td:nth-child(1)").text().toLowerCase();
+                        if (dt.indexOf(txtenter) == -1) {
+                            $(this).hide();
+                        }
+                        else {
+                            $(this).show();
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>

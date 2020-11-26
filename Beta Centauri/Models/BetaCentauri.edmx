@@ -1,0 +1,724 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BetaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblBloodGroup">
+          <Key>
+            <PropertyRef Name="BloodGroupId" />
+          </Key>
+          <Property Name="BloodGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BloodGroup" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblBranch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblCertificate">
+          <Key>
+            <PropertyRef Name="CertificateId" />
+          </Key>
+          <Property Name="CertificateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="CertificateNo" Type="varchar" MaxLength="50" />
+          <Property Name="Certificate" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblCollege">
+          <Key>
+            <PropertyRef Name="CollegeId" />
+          </Key>
+          <Property Name="CollegeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CollegeName" Type="varchar(max)" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="StateId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblCourse">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblDistrict">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="30" />
+          <Property Name="StateId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblEnquiry">
+          <Key>
+            <PropertyRef Name="EnquiryId" />
+          </Key>
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="12" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="RefferBy" Type="varchar" MaxLength="50" />
+          <Property Name="Query" Type="varchar(max)" />
+          <Property Name="EnquiryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblLogIn">
+          <Key>
+            <PropertyRef Name="LogInId" />
+          </Key>
+          <Property Name="LogInId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblRegistration">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CenterCode" Type="varchar(max)" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="CollegeId" Type="int" />
+          <Property Name="Year" Type="varchar" MaxLength="10" />
+          <Property Name="Semester" Type="varchar" MaxLength="20" />
+          <Property Name="StreamId" Type="int" />
+          <Property Name="BranchId" Type="int" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="Mobile" Type="varchar" MaxLength="12" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="BloodGroupId" Type="int" />
+          <Property Name="EmailId" Type="varchar" MaxLength="50" />
+          <Property Name="FatherName" Type="varchar" MaxLength="50" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="12" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="UploadPhoto" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="IsApproved" Type="bit" />
+          <Property Name="RegistrationNo" Type="varchar" MaxLength="50" />
+          <Property Name="CertificateNo" Type="varchar" MaxLength="20" />
+          <Property Name="Certificate" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblState">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblStream">
+          <Key>
+            <PropertyRef Name="StreamId" />
+          </Key>
+          <Property Name="StreamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StreamName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_BloodGroupId">
+          <End Role="tblBloodGroup" Type="Self.tblBloodGroup" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBloodGroup">
+              <PropertyRef Name="BloodGroupId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="BloodGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BranchId">
+          <End Role="tblBranch" Type="Self.tblBranch" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBranch">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CollegeId">
+          <End Role="tblCollege" Type="Self.tblCollege" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCollege">
+              <PropertyRef Name="CollegeId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="CollegeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_Id">
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourse">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseId">
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="0..1" />
+          <End Role="tblEnquiry" Type="Self.tblEnquiry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourse">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="tblEnquiry">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictId">
+          <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDistrict">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateId">
+          <End Role="tblState" Type="Self.tblState" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblState">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StreamId">
+          <End Role="tblStream" Type="Self.tblStream" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStream">
+              <PropertyRef Name="StreamId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="StreamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCertificate_tblRegistration">
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="0..1" />
+          <End Role="tblCertificate" Type="Self.tblCertificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRegistration">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="tblCertificate">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BetaDBModelStoreContainer">
+          <EntitySet Name="tblBloodGroup" EntityType="Self.tblBloodGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBranch" EntityType="Self.tblBranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCertificate" EntityType="Self.tblCertificate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCollege" EntityType="Self.tblCollege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCourse" EntityType="Self.tblCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDistrict" EntityType="Self.tblDistrict" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEnquiry" EntityType="Self.tblEnquiry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLogIn" EntityType="Self.tblLogIn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRegistration" EntityType="Self.tblRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblState" EntityType="Self.tblState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStream" EntityType="Self.tblStream" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BloodGroupId" Association="Self.FK_BloodGroupId">
+            <End Role="tblBloodGroup" EntitySet="tblBloodGroup" />
+            <End Role="tblRegistration" EntitySet="tblRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BranchId" Association="Self.FK_BranchId">
+            <End Role="tblBranch" EntitySet="tblBranch" />
+            <End Role="tblRegistration" EntitySet="tblRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CollegeId" Association="Self.FK_CollegeId">
+            <End Role="tblCollege" EntitySet="tblCollege" />
+            <End Role="tblRegistration" EntitySet="tblRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_Id" Association="Self.FK_Course_Id">
+            <End Role="tblCourse" EntitySet="tblCourse" />
+            <End Role="tblRegistration" EntitySet="tblRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseId" Association="Self.FK_CourseId">
+            <End Role="tblCourse" EntitySet="tblCourse" />
+            <End Role="tblEnquiry" EntitySet="tblEnquiry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictId" Association="Self.FK_DistrictId">
+            <End Role="tblDistrict" EntitySet="tblDistrict" />
+            <End Role="tblRegistration" EntitySet="tblRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateId" Association="Self.FK_StateId">
+            <End Role="tblState" EntitySet="tblState" />
+            <End Role="tblRegistration" EntitySet="tblRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StreamId" Association="Self.FK_StreamId">
+            <End Role="tblStream" EntitySet="tblStream" />
+            <End Role="tblRegistration" EntitySet="tblRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCertificate_tblRegistration" Association="Self.FK_tblCertificate_tblRegistration">
+            <End Role="tblRegistration" EntitySet="tblRegistration" />
+            <End Role="tblCertificate" EntitySet="tblCertificate" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BetaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblBloodGroup">
+          <Key>
+            <PropertyRef Name="BloodGroupId" />
+          </Key>
+          <Property Name="BloodGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblRegistrations" Relationship="Self.FK_BloodGroupId" FromRole="tblBloodGroup" ToRole="tblRegistration" />
+        </EntityType>
+        <EntityType Name="tblBranch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblRegistrations" Relationship="Self.FK_BranchId" FromRole="tblBranch" ToRole="tblRegistration" />
+        </EntityType>
+        <EntityType Name="tblCertificate">
+          <Key>
+            <PropertyRef Name="CertificateId" />
+          </Key>
+          <Property Name="CertificateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="CertificateNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Certificate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblRegistration" Relationship="Self.FK_tblCertificate_tblRegistration" FromRole="tblCertificate" ToRole="tblRegistration" />
+        </EntityType>
+        <EntityType Name="tblCollege">
+          <Key>
+            <PropertyRef Name="CollegeId" />
+          </Key>
+          <Property Name="CollegeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="StateId" Type="Int32" />
+          <NavigationProperty Name="tblRegistrations" Relationship="Self.FK_CollegeId" FromRole="tblCollege" ToRole="tblRegistration" />
+        </EntityType>
+        <EntityType Name="tblCourse">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblRegistrations" Relationship="Self.FK_Course_Id" FromRole="tblCourse" ToRole="tblRegistration" />
+          <NavigationProperty Name="tblEnquiries" Relationship="Self.FK_CourseId" FromRole="tblCourse" ToRole="tblEnquiry" />
+        </EntityType>
+        <EntityType Name="tblDistrict">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
+          <NavigationProperty Name="tblRegistrations" Relationship="Self.FK_DistrictId" FromRole="tblDistrict" ToRole="tblRegistration" />
+        </EntityType>
+        <EntityType Name="tblEnquiry">
+          <Key>
+            <PropertyRef Name="EnquiryId" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RefferBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Query" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EnquiryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" />
+          <NavigationProperty Name="tblCourse" Relationship="Self.FK_CourseId" FromRole="tblEnquiry" ToRole="tblCourse" />
+        </EntityType>
+        <EntityType Name="tblLogIn">
+          <Key>
+            <PropertyRef Name="LogInId" />
+          </Key>
+          <Property Name="LogInId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblRegistration">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CenterCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="CollegeId" Type="Int32" />
+          <Property Name="Year" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Semester" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StreamId" Type="Int32" />
+          <Property Name="BranchId" Type="Int32" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="Mobile" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BloodGroupId" Type="Int32" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UploadPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="RegistrationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CertificateNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Certificate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblBloodGroup" Relationship="Self.FK_BloodGroupId" FromRole="tblRegistration" ToRole="tblBloodGroup" />
+          <NavigationProperty Name="tblBranch" Relationship="Self.FK_BranchId" FromRole="tblRegistration" ToRole="tblBranch" />
+          <NavigationProperty Name="tblCertificates" Relationship="Self.FK_tblCertificate_tblRegistration" FromRole="tblRegistration" ToRole="tblCertificate" />
+          <NavigationProperty Name="tblCollege" Relationship="Self.FK_CollegeId" FromRole="tblRegistration" ToRole="tblCollege" />
+          <NavigationProperty Name="tblCourse" Relationship="Self.FK_Course_Id" FromRole="tblRegistration" ToRole="tblCourse" />
+          <NavigationProperty Name="tblDistrict" Relationship="Self.FK_DistrictId" FromRole="tblRegistration" ToRole="tblDistrict" />
+          <NavigationProperty Name="tblState" Relationship="Self.FK_StateId" FromRole="tblRegistration" ToRole="tblState" />
+          <NavigationProperty Name="tblStream" Relationship="Self.FK_StreamId" FromRole="tblRegistration" ToRole="tblStream" />
+        </EntityType>
+        <EntityType Name="tblState">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblRegistrations" Relationship="Self.FK_StateId" FromRole="tblState" ToRole="tblRegistration" />
+        </EntityType>
+        <EntityType Name="tblStream">
+          <Key>
+            <PropertyRef Name="StreamId" />
+          </Key>
+          <Property Name="StreamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StreamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblRegistrations" Relationship="Self.FK_StreamId" FromRole="tblStream" ToRole="tblRegistration" />
+        </EntityType>
+        <Association Name="FK_BloodGroupId">
+          <End Role="tblBloodGroup" Type="Self.tblBloodGroup" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBloodGroup">
+              <PropertyRef Name="BloodGroupId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="BloodGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BranchId">
+          <End Role="tblBranch" Type="Self.tblBranch" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBranch">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCertificate_tblRegistration">
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="0..1" />
+          <End Role="tblCertificate" Type="Self.tblCertificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRegistration">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="tblCertificate">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CollegeId">
+          <End Role="tblCollege" Type="Self.tblCollege" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCollege">
+              <PropertyRef Name="CollegeId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="CollegeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Course_Id">
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourse">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseId">
+          <End Role="tblCourse" Type="Self.tblCourse" Multiplicity="0..1" />
+          <End Role="tblEnquiry" Type="Self.tblEnquiry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourse">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="tblEnquiry">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictId">
+          <End Role="tblDistrict" Type="Self.tblDistrict" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDistrict">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateId">
+          <End Role="tblState" Type="Self.tblState" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblState">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StreamId">
+          <End Role="tblStream" Type="Self.tblStream" Multiplicity="0..1" />
+          <End Role="tblRegistration" Type="Self.tblRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStream">
+              <PropertyRef Name="StreamId" />
+            </Principal>
+            <Dependent Role="tblRegistration">
+              <PropertyRef Name="StreamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BetaDBEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblBloodGroups" EntityType="Self.tblBloodGroup" />
+          <EntitySet Name="tblBranches" EntityType="Self.tblBranch" />
+          <EntitySet Name="tblCertificates" EntityType="Self.tblCertificate" />
+          <EntitySet Name="tblColleges" EntityType="Self.tblCollege" />
+          <EntitySet Name="tblCourses" EntityType="Self.tblCourse" />
+          <EntitySet Name="tblDistricts" EntityType="Self.tblDistrict" />
+          <EntitySet Name="tblEnquiries" EntityType="Self.tblEnquiry" />
+          <EntitySet Name="tblLogIns" EntityType="Self.tblLogIn" />
+          <EntitySet Name="tblRegistrations" EntityType="Self.tblRegistration" />
+          <EntitySet Name="tblStates" EntityType="Self.tblState" />
+          <EntitySet Name="tblStreams" EntityType="Self.tblStream" />
+          <AssociationSet Name="FK_BloodGroupId" Association="Self.FK_BloodGroupId">
+            <End Role="tblBloodGroup" EntitySet="tblBloodGroups" />
+            <End Role="tblRegistration" EntitySet="tblRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BranchId" Association="Self.FK_BranchId">
+            <End Role="tblBranch" EntitySet="tblBranches" />
+            <End Role="tblRegistration" EntitySet="tblRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCertificate_tblRegistration" Association="Self.FK_tblCertificate_tblRegistration">
+            <End Role="tblRegistration" EntitySet="tblRegistrations" />
+            <End Role="tblCertificate" EntitySet="tblCertificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CollegeId" Association="Self.FK_CollegeId">
+            <End Role="tblCollege" EntitySet="tblColleges" />
+            <End Role="tblRegistration" EntitySet="tblRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Course_Id" Association="Self.FK_Course_Id">
+            <End Role="tblCourse" EntitySet="tblCourses" />
+            <End Role="tblRegistration" EntitySet="tblRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseId" Association="Self.FK_CourseId">
+            <End Role="tblCourse" EntitySet="tblCourses" />
+            <End Role="tblEnquiry" EntitySet="tblEnquiries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictId" Association="Self.FK_DistrictId">
+            <End Role="tblDistrict" EntitySet="tblDistricts" />
+            <End Role="tblRegistration" EntitySet="tblRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateId" Association="Self.FK_StateId">
+            <End Role="tblState" EntitySet="tblStates" />
+            <End Role="tblRegistration" EntitySet="tblRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StreamId" Association="Self.FK_StreamId">
+            <End Role="tblStream" EntitySet="tblStreams" />
+            <End Role="tblRegistration" EntitySet="tblRegistrations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BetaDBModelStoreContainer" CdmEntityContainer="BetaDBEntities2">
+          <EntitySetMapping Name="tblBloodGroups">
+            <EntityTypeMapping TypeName="BetaDBModel.tblBloodGroup">
+              <MappingFragment StoreEntitySet="tblBloodGroup">
+                <ScalarProperty Name="BloodGroupId" ColumnName="BloodGroupId" />
+                <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBranches">
+            <EntityTypeMapping TypeName="BetaDBModel.tblBranch">
+              <MappingFragment StoreEntitySet="tblBranch">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCertificates">
+            <EntityTypeMapping TypeName="BetaDBModel.tblCertificate">
+              <MappingFragment StoreEntitySet="tblCertificate">
+                <ScalarProperty Name="CertificateId" ColumnName="CertificateId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CertificateNo" ColumnName="CertificateNo" />
+                <ScalarProperty Name="Certificate" ColumnName="Certificate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblColleges">
+            <EntityTypeMapping TypeName="BetaDBModel.tblCollege">
+              <MappingFragment StoreEntitySet="tblCollege">
+                <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+                <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCourses">
+            <EntityTypeMapping TypeName="BetaDBModel.tblCourse">
+              <MappingFragment StoreEntitySet="tblCourse">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDistricts">
+            <EntityTypeMapping TypeName="BetaDBModel.tblDistrict">
+              <MappingFragment StoreEntitySet="tblDistrict">
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEnquiries">
+            <EntityTypeMapping TypeName="BetaDBModel.tblEnquiry">
+              <MappingFragment StoreEntitySet="tblEnquiry">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RefferBy" ColumnName="RefferBy" />
+                <ScalarProperty Name="Query" ColumnName="Query" />
+                <ScalarProperty Name="EnquiryId" ColumnName="EnquiryId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLogIns">
+            <EntityTypeMapping TypeName="BetaDBModel.tblLogIn">
+              <MappingFragment StoreEntitySet="tblLogIn">
+                <ScalarProperty Name="LogInId" ColumnName="LogInId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRegistrations">
+            <EntityTypeMapping TypeName="BetaDBModel.tblRegistration">
+              <MappingFragment StoreEntitySet="tblRegistration">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CenterCode" ColumnName="CenterCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="CollegeId" ColumnName="CollegeId" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BloodGroupId" ColumnName="BloodGroupId" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="UploadPhoto" ColumnName="UploadPhoto" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="RegistrationNo" ColumnName="RegistrationNo" />
+                <ScalarProperty Name="CertificateNo" ColumnName="CertificateNo" />
+                <ScalarProperty Name="Certificate" ColumnName="Certificate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStates">
+            <EntityTypeMapping TypeName="BetaDBModel.tblState">
+              <MappingFragment StoreEntitySet="tblState">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStreams">
+            <EntityTypeMapping TypeName="BetaDBModel.tblStream">
+              <MappingFragment StoreEntitySet="tblStream">
+                <ScalarProperty Name="StreamId" ColumnName="StreamId" />
+                <ScalarProperty Name="StreamName" ColumnName="StreamName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
